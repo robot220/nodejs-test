@@ -18,7 +18,11 @@ router.route('/users')
 router.route('/users/:id')
     .get(function(req,res){
         var user = UM.getById(req.params.id);
-        res.json( user );
+        if (!user) {
+            res.status(200).json(dbMessages.USER_NOT_FOUND);
+        } else {
+            res.json( user );
+        }
     });
 
 module.exports = router;

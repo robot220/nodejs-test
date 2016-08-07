@@ -3,9 +3,9 @@ var fs = require('fs');
 class UserManager {
     constructor(){
 
+        this.add = add;
         this.getAll = getAll;
         this.getById = getById;
-        this.add = add;
         this.generateId = generateId;
 
     }
@@ -27,7 +27,7 @@ function add(user){
 }
 
 function updateUsers(users){
-    var _users = JSON.stringify(users, null, 4);
+    var _users = JSON.stringify(users, null, 2);
     return fs.writeFileSync("users.json", _users);
 }
 
